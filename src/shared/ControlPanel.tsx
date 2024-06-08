@@ -54,7 +54,7 @@ export default function ControlPanel() {
         </CardBody>
         <Divider />
         <CardFooter>
-          <Button width={"100%"} variant="solid" onClick={handleGenerate}>
+          <Button size={'lg'} width={"100%"} variant="solid" onClick={handleGenerate}>
             Generate
           </Button>
         </CardFooter>

@@ -4,7 +4,7 @@ export default function AppHeader() {
   return (
     <Box p={4} as={Card}>
       <Heading fontSize={"x-large"} textAlign={"center"} fontWeight="bold">
-        Password Generator
+        Key Mint <small>(Password Generator)</small>
       </Heading>
     </Box>
   );

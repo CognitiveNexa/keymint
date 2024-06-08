@@ -7,8 +7,6 @@ interface StrengthBarProps {
 export default function Strengthbar({ strength }: StrengthBarProps) {
   let colorScheme = "red";
 
-  console.log(strength);
-
   if (strength >= 25) {
     colorScheme = "orange";
   }
