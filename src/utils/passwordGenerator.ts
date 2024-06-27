@@ -30,11 +30,24 @@ export function passwordGenerator({
   const ambiguousCharacters = "^&*(){}[]~";
 
   let charPool = "";
+  let mandatoryChars = "";
 
-  if (lowerLetter) charPool += lowerLetters;
-  if (upperLetter) charPool += upperLetters;
-  if (number) charPool += numbers;
-  if (symbol) charPool += symbols;
+  if (lowerLetter) {
+    charPool += lowerLetters;
+    mandatoryChars += getRandomChar(lowerLetters);
+  }
+  if (upperLetter) {
+    charPool += upperLetters;
+    mandatoryChars += getRandomChar(upperLetters);
+  }
+  if (number) {
+    charPool += numbers;
+    mandatoryChars += getRandomChar(numbers);
+  }
+  if (symbol) {
+    charPool += symbols;
+    mandatoryChars += getRandomChar(symbols);
+  }
   if (includeSpaces) charPool += spaces;
   if (includeAmbiguous) charPool += ambiguousCharacters;
 
@@ -45,8 +58,8 @@ export function passwordGenerator({
       .join("");
   }
 
-  const usedChars = new Set<string>();
-  let password = "";
+  const usedChars = new Set<string>(mandatoryChars.split(""));
+  let password = mandatoryChars;
 
   while (password.length < length) {
     const char = charPool[Math.floor(Math.random() * charPool.length)];
@@ -61,6 +74,10 @@ export function passwordGenerator({
   }
 
   return shuffleString(password);
+}
+
+function getRandomChar(str: string): string {
+  return str[Math.floor(Math.random() * str.length)];
 }
 
 function shuffleString(str: string): string {
